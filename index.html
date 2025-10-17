@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>NJCCIC Team 2 CTF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 1% 20%;
+        }
+        h1 {
+            text-align: center;
+            color: #d9534f;
+        }
+        marquee {
+            color: red;
+            font-weight: bold;
+        }
+        .challenges {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .challenge {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+            width: 98%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .challenge audio {
+            margin: 15px 0 5px 0;
+            width: 100%;
+        }
+        .challenge img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+        .challenge p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        .challenge textarea {
+            width: 80%;
+            height: 250px;
+            font-size: 0.8rem;
+            font-family: Consolas, "Courier New", monospace;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 15px 0;
+        }
+        .locked {
+            background-color: #e0e0e0;
+            color: #999;
+        }
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .center i {
+            font-size: 0.9rem;
+        }
+        .input-row {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+        .input-row input {
+            flex: 1;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: all 0.3s;
+        }
+        .input-row input:hover {
+            border-color: #999;
+        }
+        .input-row input:focus {
+            border-color: #66afe9;
+            outline: none;
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+        }
+        .wrong:focus {
+            border-color: red !important;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.6) !important;
+        }
+        .input-row button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .input-row button:hover {
+            background-color: #4cae4c;
+            transform: scale(1.05);
+        }
+        code {
+            margin: 15px 0 15px 0;
+            font-size: 1.3rem;
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, "Courier New", monospace;
+        }
+        li a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Very Insecure Smoothie Company</h1>
+    <i><marquee>ALERT: OUR ONLINE DATABASE HAS BEEN BREACHED! PLEASE CHANGE ALL YOUR PASSWORDS AND CHANGE ANY SENSITIVE INFORMATION.</marquee></i>
+    <p><b>Instructions: </b> This smoothie company has suffered a breach and thousands of file have been dumped online! You have been hired by a CISO to follow the clues and identify the hackers. Your task is to use the trail of clues left by the hackers to collect flags.</p>
+    <ul>
+        <li><b>Helpful links:</b> <a href="https://cyberchef.io/" target="_blank">CyberChef.io</a>, <a href="https://www.audacityteam.org/" target="_blank">Audacity</a>, <a href="https://exif.tools/" target="_blank">EXIF Tools</a></li>
+        <li><b>Difficulty: </b> Beginner</li>
+        <li><b>Expected Time: </b> Short 10~25min</li>
+    </ul>
+    <p><i>Note: All flags will be in the format NJCCIC{TEXT}</i></p>
+    <div class="challenges">
+        <div class="challenge">
+            <p id="text1"><b>Challenge 1: </b> The hackers left a secret message in this screenshot they posted online bragging about their escapades. Can you find it?</p>
+            <div id="ch1">
+                <div class="center">
+                    <img src="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/metadata.png" alt="Challenge 1 Image"/>
+                    <i>Download image <a download target="_blank" href="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/metadata.png">here</a> via JSDelivr</i>
+                </div>
+                <label for="flag1"><b>Flag 1:</b></label>
+                <div class="input-row">
+                    <input id="flag1" type="text" placeholder="Enter your flag here" onkeydown="checkEnter(this)"/>
+                    <button onclick="check(2)">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="challenge locked"><b>Challenge 2: </b> This challenge is locked. Solve Challenge 1 to unlock it.</div>
+        <div class="challenge locked"><b>Challenge 3: </b> This challenge is locked. Solve Challenge 2 to unlock it.</div>
+        <div class="challenge locked"><b>Challenge 4: </b> This challenge is locked. Solve Challenge 3 to unlock it.</div>
+        <div class="challenge locked"><b>Challenge 5: </b> This challenge is locked. Solve Challenge 4 to unlock it.</div>
+        <div class="challenge locked"><b>Challenge 6: </b> This challenge is locked. Solve Challenge 5 to unlock it.</div>
+        <div class="challenge locked"><b>Challenge 7: </b> This challenge is locked. Solve Challenge 6 to unlock it.</div>
+    </div>
+    <script>
+        const correctFlags = {1: "NJCCIC{TRaV3RSE_$3CrET_T3XTS}", 2: "NJCCIC{F!1E_TyP3_$W!TCh!NG}", 3: "NJCCIC{AUD!O_GRaM_$p3cTrO}", 4: "NJCCIC{13A$E_S!XTY_40UR}", 5: "NJCCIC{13A$E_B!n_2T3XT}", 6: "NJCCIC{SEa$IR_$a1AD_C!pH3R}", 7: "NJCCIC{H3x_A$sEmBl3R}"};
+        const challengeTexts = {
+            2: "The hackers also emailed this png file to a journalist. The image doesn't seem to work right. Can you fix it and find the hidden flag?",
+            3: "We hacked into their private communication server! They left this cryptic audio file on a private server. Can you find the flag?",
+            4: "Just found this encrypted username from the hacker's internal systems. Can you find the flag hidden here?",
+            5: "We found their username! Now we need their password. They sent this text in a private communication. Can you find the flag?",
+            6: "We logged onto their main server! We found this encrypted command. It might dump all their data! Can you find the flag?",
+            7: "We dumped their entire server! This is the hex code in one of their main files. Can you find the final flag to save the company?",
+        };
+        const challengeActionItems = {
+            2: `<div class="center">
+                    <img src="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/broken.png" alt="Broken PNG"/>
+                    <i>Download file <a target="_blank" download href="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/broken.png">here</a> via JSDelivr</i>
+                </div>`,
+            3: `<div class="center">
+                    <audio controls>
+                        <source src="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/audio.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <i>Download file <a target="_blank" download href="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/audio.wav">here</a> via JSDelivr</i></div>`,
+            4: `<div class="center">
+                    <code class="text">TkpDQ0lDezEzQSRFX1MhWFRZXzQwVVJ9</code>
+                </div>`,
+            5: `<div class="center">
+                    <code class="text">01001010 01011010 01000110 01000101 01000111 01010001 00110010 01001010 01001001 01001110 00110101 01010100 01000011 01001101 00110010 01000010 01000101 01010010 01000011 01010110 00110110 01010001 01010010 01000010 01001110 01011010 01010000 01010100 01000101 01010110 01000010 01010100 01001100 01000010 01001011 01001000 00110010 00111101 00111101 00111101</code>
+                </div>`,
+            6: `<div class="center">
+                    <code class="text">KGZZFZ{PBx$FO_$x1XA_Z!mE3O}</code>
+                </div>`,
+            7: `<div class="center">
+                    <textarea readonly>
+00000000  33 32 20 36 35 20 32 30 20 33 36 20 33 39 20 32  |32 65 20 36 39 2|
+00000010  30 20 33 36 20 36 35 20 32 30 20 33 37 20 33 34  |0 36 65 20 37 34|
+00000020  20 32 30 20 33 36 20 33 35 20 32 30 20 33 36 20  | 20 36 35 20 36 |
+00000030  36 33 20 32 30 20 33 35 20 36 36 20 32 30 20 33  |63 20 35 66 20 3|
+00000040  37 20 33 33 20 32 30 20 33 37 20 33 39 20 32 30  |7 33 20 37 39 20|
+00000050  20 33 36 20 36 35 20 32 30 20 33 37 20 33 34 20  | 36 65 20 37 34 |
+00000060  32 30 20 33 36 20 33 31 20 32 30 20 33 37 20 33  |20 36 31 20 37 3|
+00000070  38 20 32 30 20 33 32 20 33 30 20 32 30 20 33 36  |8 20 32 30 20 36|
+00000080  20 36 35 20 32 30 20 33 36 20 36 36 20 32 30 20  | 65 20 36 66 20 |
+00000090  33 37 20 33 30 20 32 30 20 33 37 20 33 32 20 32  |37 30 20 37 32 2|
+000000a0  30 20 33 36 20 33 35 20 32 30 20 33 36 20 33 36  |0 36 35 20 36 36|
+000000b0  20 32 30 20 33 36 20 33 39 20 32 30 20 33 37 20  | 20 36 39 20 37 |
+000000c0  33 38 20 32 30 20 33 30 20 36 31 20 32 30 20 33  |38 20 30 61 20 3|
+000000d0  32 20 36 35 20 32 30 20 33 36 20 33 37 20 32 30  |2 65 20 36 37 20|
+000000e0  20 33 36 20 36 33 20 32 30 20 33 36 20 36 36 20  | 36 63 20 36 66 |
+000000f0  32 30 20 33 36 20 33 32 20 32 30 20 33 36 20 33  |20 36 32 20 36 3|
+00000100  31 20 32 30 20 33 36 20 36 33 20 32 30 20 33 32  |1 20 36 63 20 32|
+00000110  20 33 30 20 32 30 20 33 35 20 36 36 20 32 30 20  | 30 20 35 66 20 |
+00000120  33 37 20 33 33 20 32 30 20 33 37 20 33 34 20 32  |37 33 20 37 34 2|
+00000130  30 20 33 36 20 33 31 20 32 30 20 33 37 20 33 32  |0 36 31 20 37 32|
+00000140  20 32 30 20 33 37 20 33 34 20 32 30 20 33 30 20  | 20 37 34 20 30 |
+00000150  36 31 20 32 30 20 33 30 20 36 31 20 32 30 20 33  |61 20 30 61 20 3|
+00000160  35 20 36 36 20 32 30 20 33 37 20 33 33 20 32 30  |5 66 20 37 33 20|
+00000170  20 33 37 20 33 34 20 32 30 20 33 36 20 33 31 20  | 37 34 20 36 31 |
+00000180  32 30 20 33 37 20 33 32 20 32 30 20 33 37 20 33  |20 37 32 20 37 3|
+00000190  34 20 32 30 20 33 33 20 36 31 20 32 30 20 33 30  |4 20 33 61 20 30|
+000001a0  20 36 31 20 32 30 20 33 36 20 33 33 20 32 30 20  | 61 20 36 33 20 |
+000001b0  33 36 20 33 31 20 32 30 20 33 37 20 33 34 20 32  |36 31 20 37 34 2|
+000001c0  30 20 33 36 20 33 33 20 32 30 20 33 36 20 33 38  |0 36 33 20 36 38|
+000001d0  20 32 30 20 33 32 20 33 30 20 32 30 20 33 37 20  | 20 32 30 20 37 |
+000001e0  33 33 20 32 30 20 33 37 20 33 39 20 32 30 20 33  |33 20 37 39 20 3|
+000001f0  37 20 33 33 20 32 30 20 33 36 20 33 33 20 32 30  |7 33 20 36 33 20|
+00000200  20 33 36 20 33 31 20 32 30 20 33 36 20 36 33 20  | 36 31 20 36 63 |
+00000210  32 30 20 33 36 20 36 33 20 32 30 20 33 32 20 33  |20 36 63 20 32 3|
+00000220  30 20 32 30 20 33 37 20 33 32 20 32 30 20 33 36  |0 20 37 32 20 36|
+00000230  20 33 35 20 32 30 20 33 36 20 33 31 20 32 30 20  | 35 20 36 31 20 |
+00000240  33 36 20 33 34 20 32 30 20 33 30 20 36 31 20 32  |36 34 20 30 61 2|
+00000250  30 20 33 36 20 33 33 20 32 30 20 33 36 20 36 36  |0 36 33 20 36 66|
+00000260  20 32 30 20 33 36 20 36 34 20 32 30 20 33 36 20  | 20 36 64 20 36 |
+00000270  36 34 20 32 30 20 33 36 20 33 31 20 32 30 20 33  |64 20 36 31 20 3|
+00000280  36 20 36 35 20 32 30 20 33 36 20 33 34 20 32 30  |6 65 20 36 34 20|
+00000290  20 33 37 20 33 33 20 32 30 20 33 30 20 36 31 20  | 37 33 20 30 61 |
+000002a0  32 30 20 33 32 20 33 30 20 32 30 20 33 32 20 33  |20 32 30 20 32 3|
+000002b0  30 20 32 30 20 33 37 20 33 33 20 32 30 20 33 36  |0 20 37 33 20 36|
+000002c0  20 33 39 20 32 30 20 33 36 20 36 33 20 32 30 20  | 39 20 36 63 20 |
+000002d0  33 36 20 33 35 20 32 30 20 33 36 20 36 35 20 32  |36 35 20 36 65 2|
+000002e0  30 20 33 37 20 33 34 20 32 30 20 33 30 20 36 31  |0 37 34 20 30 61|
+000002f0  20 32 30 20 33 32 20 33 30 20 32 30 20 33 32 20  | 20 32 30 20 32 |
+00000300  33 30 20 32 30 20 33 36 20 33 39 20 32 30 20 33  |30 20 36 39 20 3|
+00000310  36 20 33 36 20 32 30 20 33 32 20 33 30 20 32 30  |6 36 20 32 30 20|
+00000320  20 33 32 20 33 38 20 32 30 20 33 32 20 33 34 20  | 32 38 20 32 34 |
+00000330  32 30 20 33 37 20 33 32 20 32 30 20 33 36 20 33  |20 37 32 20 36 3|
+00000340  31 20 32 30 20 33 37 20 33 38 20 32 30 20 33 32  |1 20 37 38 20 32|
+00000350  20 33 30 20 32 30 20 33 33 20 36 34 20 32 30 20  | 30 20 33 64 20 |
+00000360  33 33 20 36 34 20 32 30 20 33 32 20 33 30 20 32  |33 64 20 32 30 2|
+00000370  30 20 33 33 20 33 38 20 32 30 20 33 32 20 33 39  |0 33 38 20 32 39|
+00000380  20 32 30 20 33 30 20 36 31 20 32 30 20 33 37 20  | 20 30 61 20 37 |
+00000390  33 30 20 32 30 20 33 37 20 33 32 20 32 30 20 33  |30 20 37 32 20 3|
+000003a0  36 20 33 39 20 32 30 20 33 36 20 36 35 20 32 30  |6 39 20 36 65 20|
+000003b0  20 33 37 20 33 34 20 32 30 20 33 36 20 33 36 20  | 37 34 20 36 36 |
+000003c0  32 30 20 33 32 20 33 30 20 32 30 20 33 32 20 33  |20 32 30 20 32 3|
+000003d0  32 20 32 30 20 33 36 20 33 33 20 32 30 20 33 36  |2 20 36 33 20 36|
+000003e0  20 36 36 20 32 30 20 33 36 20 36 35 20 32 30 20  | 66 20 36 65 20 |
+000003f0  33 36 20 33 34 20 32 30 20 33 36 20 33 39 20 32  |36 34 20 36 39 2|
+00000400  30 20 33 37 20 33 34 20 32 30 20 33 36 20 33 39  |0 37 34 20 36 39|
+00000410  20 32 30 20 33 36 20 36 36 20 32 30 20 33 36 20  | 20 36 66 20 36 |
+00000420  36 35 20 32 30 20 33 32 20 33 30 20 32 30 20 33  |65 20 32 30 20 3|
+00000430  36 20 36 34 20 32 30 20 33 36 20 33 35 20 32 30  |6 64 20 36 35 20|
+00000440  20 33 37 20 33 34 20 32 30 20 33 35 20 36 33 20  | 37 34 20 35 63 |
+00000450  32 30 20 33 36 20 36 35 20 32 30 20 33 32 20 33  |20 36 65 20 32 3|
+00000460  32 20 32 30 20 33 30 20 36 31 20 32 30 20 33 30  |2 20 30 61 20 30|
+00000470  20 33 39 20 32 30 20 33 37 20 33 33 20 32 30 20  | 39 20 37 33 20 |
+00000480  33 36 20 33 35 20 32 30 20 33 37 20 33 34 20 32  |36 35 20 37 34 2|
+00000490  30 20 33 32 20 33 30 20 32 30 20 33 32 20 33 34  |0 32 30 20 32 34|
+000004a0  20 32 30 20 33 37 20 33 32 20 32 30 20 33 36 20  | 20 37 32 20 36 |
+000004b0  33 34 20 32 30 20 33 37 20 33 38 20 32 30 20 33  |34 20 37 38 20 3|
+000004c0  32 20 33 30 20 32 30 20 33 33 20 36 34 20 32 30  |2 30 20 33 64 20|
+000004d0  20 33 32 20 33 30 20 32 30 20 33 32 20 36 31 20  | 32 30 20 32 61 |
+000004e0  32 30 20 33 32 20 33 38 20 32 30 20 33 32 20 33  |20 32 38 20 32 3|
+000004f0  38 20 32 30 20 33 36 20 36 33 20 32 30 20 33 36  |8 20 36 63 20 36|
+00000500  20 36 36 20 32 30 20 33 36 20 36 35 20 32 30 20  | 66 20 36 65 20 |
+00000510  33 36 20 33 37 20 32 30 20 33 32 20 33 30 20 32  |36 37 20 32 30 2|
+00000520  30 20 33 32 20 36 31 20 32 30 20 33 32 20 33 39  |0 32 61 20 32 39|
+00000530  20 32 30 20 33 32 20 33 38 20 32 30 20 33 32 20  | 20 32 38 20 32 |
+00000540  33 30 20 32 30 20 33 32 20 33 34 20 32 30 20 33  |30 20 32 34 20 3|
+00000550  37 20 33 32 20 32 30 20 33 37 20 33 33 20 32 30  |7 32 20 37 33 20|
+00000560  20 33 37 20 33 30 20 32 30 20 33 32 20 33 30 20  | 37 30 20 32 30 |
+00000570  32 30 20 33 32 20 36 32 20 32 30 20 33 32 20 33  |20 32 62 20 32 3|
+00000580  30 20 32 30 20 33 34 20 36 35 20 32 30 20 33 34  |0 20 34 65 20 34|
+00000590  20 36 31 20 32 30 20 33 34 20 33 33 20 32 30 20  | 61 20 34 33 20 |
+000005a0  33 34 20 33 33 20 32 30 20 33 34 20 33 39 20 32  |34 33 20 34 39 2|
+000005b0  30 20 33 34 20 33 33 20 32 30 20 33 37 20 36 32  |0 34 33 20 37 62|
+000005c0  20 32 30 20 33 34 20 33 38 20 32 30 20 33 33 20  | 20 34 38 20 33 |
+000005d0  33 33 20 32 30 20 33 37 20 33 38 20 32 30 20 33  |33 20 37 38 20 3|
+000005e0  35 20 36 36 20 32 30 20 33 34 20 33 31 20 32 30  |5 66 20 34 31 20|
+000005f0  20 33 32 20 33 34 20 32 30 20 33 37 20 33 33 20  | 32 34 20 37 33 |
+00000600  32 30 20 33 34 20 33 35 20 32 30 20 33 36 20 36  |20 34 35 20 36 6|
+00000610  34 20 32 30 20 33 34 20 33 32 20 32 30 20 33 36  |4 20 34 32 20 36|
+00000620  20 36 33 20 32 30 20 33 33 20 33 33 20 32 30 20  | 63 20 33 33 20 |
+00000630  33 35 20 33 32 20 32 30 20 33 37 20 36 34 20 32  |35 32 20 37 64 2|
+00000640  30 20 33 32 20 33 39 20 32 30 20 33 32 20 33 39  |0 32 39 20 32 39|
+00000650  20 32 30 20 33 30 20 36 31 20 32 30 20 33 36 20  | 20 30 61 20 36 |
+00000660  33 35 20 32 30 20 33 36 20 36 33 20 32 30 20 33  |35 20 36 63 20 3|
+00000670  37 20 33 33 20 32 30 20 33 36 20 33 35 20 32 30  |7 33 20 36 35 20|
+00000680  20 33 32 20 33 30 20 32 30 20 33 30 20 36 31 20  | 32 30 20 30 61 |
+00000690  32 30 20 33 30 20 33 39 20 32 30 20 33 37 20 33  |20 30 39 20 37 3|
+000006a0  30 20 32 30 20 33 37 20 33 32 20 32 30 20 33 36  |0 20 37 32 20 36|
+000006b0  20 33 39 20 32 30 20 33 36 20 36 35 20 32 30 20  | 39 20 36 65 20 |
+000006c0  33 37 20 33 34 20 32 30 20 33 36 20 33 36 20 32  |37 34 20 36 36 2|
+000006d0  30 20 33 32 20 33 30 20 32 30 20 33 32 20 33 32  |0 32 30 20 32 32|
+000006e0  20 32 30 20 33 32 20 33 35 20 32 30 20 33 36 20  | 20 32 35 20 36 |
+000006f0  33 34 20 32 30 20 33 35 20 36 33 20 32 30 20 33  |34 20 35 63 20 3|
+00000700  36 20 36 35 20 32 30 20 33 32 20 33 32 20 32 30  |6 65 20 32 32 20|
+00000710  20 33 32 20 36 33 20 32 30 20 33 32 20 33 30 20  | 32 63 20 32 30 |
+00000720  32 30 20 33 32 20 33 34 20 32 30 20 33 37 20 33  |20 32 34 20 37 3|
+00000730  32 20 32 30 20 33 37 20 33 33 20 32 30 20 33 37  |2 20 37 33 20 37|
+00000740  20 33 30 20 32 30 20 33 32 20 33 30 20 32 30 20  | 30 20 32 30 20 |
+00000750  33 32 20 36 32 20 32 30 20 33 32 20 33 30 20 32  |32 62 20 32 30 2|
+00000760  30 20 33 33 20 33 33 20 32 30 20 33 33 20 33 32  |0 33 33 20 33 32|
+00000770  20 32 30 20 33 30 20 36 31 20 32 30 20 33 32 20  | 20 30 61 20 32 |
+00000780  33 30 20 32 30 20 33 32 20 33 30 20 32 30 20 33  |30 20 32 30 20 3|
+00000790  36 20 33 35 20 32 30 20 33 36 20 36 35 20 32 30  |6 35 20 36 65 20|
+000007a0  20 33 36 20 33 34 20 32 30 20 33 30 20 36 31 20  | 36 34 20 30 61 |
+000007b0  32 30 20 33 32 20 33 30 20 32 30 20 33 32 20 33  |20 32 30 20 32 3|
+000007c0  30 20 32 30 20 33 36 20 33 33 20 32 30 20 33 36  |0 20 36 33 20 36|
+000007d0  20 36 36 20 32 30 20 33 36 20 36 35 20 32 30 20  | 66 20 36 65 20 |
+000007e0  33 37 20 33 34 20 32 30 20 33 36 20 33 39 20 32  |37 34 20 36 39 2|
+000007f0  30 20 33 36 20 36 35 20 32 30 20 33 37 20 33 35  |0 36 65 20 37 35|
+00000800  20 32 30 20 33 36 20 33 35 20 32 30 20 33 30 20  | 20 36 35 20 30 |
+00000810  36 31 20 32 30 20 33 36 20 33 35 20 32 30 20 33  |61 20 36 35 20 3|
+00000820  36 20 36 35 20 32 30 20 33 36 20 33 34 20 32 30  |6 65 20 36 34 20|
+00000830  20 33 30 20 36 31 20 32 30 20 33 36 20 33 33 20  | 30 61 20 36 33 |
+00000840  32 30 20 33 36 20 36 36 20 32 30 20 33 36 20 36  |20 36 66 20 36 6|
+00000850  35 20 32 30 20 33 37 20 33 34 20 32 30 20 33 36  |5 20 37 34 20 36|
+00000860  20 33 39 20 32 30 20 33 36 20 36 35 20 32 30 20  | 39 20 36 65 20 |
+00000870  33 37 20 33 35 20 32 30 20 33 36 20 33 35 20 32  |37 35 20 36 35 2|
+00000880  30 20 33 30 20 36 31                             |0 30 61|</textarea>
+                </div>`,
+        };
+        function check(challengeNumber) {
+            const flagInput = document.getElementById(`flag${challengeNumber - 1}`);
+            const flag = flagInput.value.trim();
+            if (flag === correctFlags[challengeNumber - 1]) {
+                alert("Correct! Challenge " + challengeNumber + " unlocked.");
+                if (challengeNumber > 7) {
+                    localStorage.setItem(`finish`, "unlocked");
+                    document.getElementById(`ch${challengeNumber - 1}`).style.display = 'none';
+                    document.getElementById(`text${challengeNumber - 1}`).innerHTML = `<b>Challenge ${challengeNumber - 1}:</b> Solved!`;
+                    return;
+                }
+                const nextChallenge = document.getElementsByClassName("challenge")[challengeNumber - 1];
+                nextChallenge.classList.remove("locked");
+                nextChallenge.innerHTML = `
+                    <p id="text${challengeNumber}"><b>Challenge ${challengeNumber}: </b> ${challengeTexts[challengeNumber]}</p>
+                    <div id="ch${challengeNumber}">
+                        ${challengeActionItems[challengeNumber]}
+                        <label for="flag${challengeNumber}"><b>Flag ${challengeNumber}:</b></label>
+                        <div class="input-row">
+                            <input id="flag${challengeNumber}" type="text" placeholder="Enter your flag here" onkeydown="checkEnter(this)"/>
+                            <button onclick="check(${challengeNumber + 1})">Submit</button>
+                        </div>
+                    </div>
+                `;
+                localStorage.setItem(`challenge${challengeNumber}`, "unlocked");
+                document.getElementById(`ch${challengeNumber - 1}`).style.display = 'none';
+                document.getElementById(`text${challengeNumber - 1}`).innerHTML = `<b>Challenge ${challengeNumber - 1}:</b> Solved!`;
+            } else {
+                alert("Incorrect flag. Please try again.");
+                flagInput.classList.add("wrong");
+                flagInput.focus();
+            }
+        }
+        function checkEnter(el) {
+            el.classList.remove("wrong");
+            if (event.key === "Enter") {
+                const id = el.id;
+                const challengeNumber = parseInt(id.replace("flag", "")) + 1;
+                check(challengeNumber);
+            }
+        }
+        for (let i = 2; i <= 7; i++) {
+            if (localStorage.getItem(`challenge${i}`) === "unlocked") {
+                document.getElementById(`ch${i - 1}`).style.display = 'none';
+                document.getElementById(`text${i - 1}`).innerHTML = `<b>Challenge ${i - 1}:</b> Solved!`;
+                const challenge = document.getElementsByClassName("challenge")[i - 1];
+                challenge.classList.remove("locked");
+                challenge.innerHTML = `
+                    <p id="text${i}"><b>Challenge ${i}: </b> ${challengeTexts[i]}</p>
+                    <div id="ch${i}">
+                        ${challengeActionItems[i]}
+                        <label for="flag${i}"><b>Flag ${i}:</b></label>
+                        <div class="input-row">
+                            <input id="flag${i}" type="text" placeholder="Enter your flag here" onkeydown="checkEnter(this)"/>
+                            <button onclick="check(${i + 1})">Submit</button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                break;
+            }
+        }
+        if (localStorage.getItem("finish") === "unlocked") {
+            document.getElementById(`ch7`).style.display = 'none';
+            document.getElementById(`text7`).innerHTML = `<b>Challenge 7:</b> Solved!`;
+        }
+    </script>
+</body>
+</html>
