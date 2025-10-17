@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>NJCCIC Team 2 CTF</title>
+    <title>NJCCIC Team 2 CTF Challenge</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +13,11 @@
         h1 {
             text-align: center;
             color: #d9534f;
+        }
+        .authors {
+            display: block;
+            text-align: center;
+            margin: -15px 0 15px 0;
         }
         marquee {
             color: red;
@@ -117,29 +122,30 @@
             border-radius: 4px;
             font-family: Consolas, "Courier New", monospace;
         }
-        li a {
+        li a, .link {
             color: #337ab7;
             text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <h1>Very Insecure Smoothie Company</h1>
+    <h1 id="title">Very <span id="companyType">Insecure</span> Smoothie Company</h1>
+    <i class="authors">By: Dheirya Tyagi & Lydia Henry</i>
     <i><marquee>ALERT: OUR ONLINE DATABASE HAS BEEN BREACHED! PLEASE CHANGE ALL YOUR PASSWORDS AND CHANGE ANY SENSITIVE INFORMATION.</marquee></i>
-    <p><b>Instructions: </b> This smoothie company has suffered a breach and thousands of file have been dumped online! You have been hired by a CISO to follow the clues and identify the hackers. Your task is to use the trail of clues left by the hackers to collect flags.</p>
-    <ul>
+    <p id="instructions"><b>Instructions: </b> This smoothie company has suffered a breach and thousands of file have been dumped online! You have been hired by a CISO to follow the clues and identify the hackers. Your task is to use the trail of clues left by the hackers to collect flags.</p>
+    <ul class="hide">
         <li><b>Helpful links:</b> <a href="https://cyberchef.io/" target="_blank">CyberChef.io</a>, <a href="https://www.audacityteam.org/" target="_blank">Audacity</a>, <a href="https://exif.tools/" target="_blank">EXIF Tools</a></li>
         <li><b>Difficulty: </b> Beginner</li>
         <li><b>Expected Time: </b> Short 10~25min</li>
     </ul>
-    <p><i>Note: All flags will be in the format NJCCIC{TEXT}</i></p>
+    <p class="hide"><i>Note: All flags will be in the format <b>NJCCIC{TEXT}</b>! The code is <a class="link" href="https://github.com/Dheirya/NJCCIC-CTF" target="_blank">here</a>.</i></p>
     <div class="challenges">
         <div class="challenge">
             <p id="text1"><b>Challenge 1: </b> The hackers left a secret message in this screenshot they posted online bragging about their escapades. Can you find it?</p>
             <div id="ch1">
                 <div class="center">
                     <img src="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/metadata.png" alt="Challenge 1 Image"/>
-                    <i>Download image <a download target="_blank" href="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/metadata.png">here</a> via JSDelivr</i>
+                    <i>Download image <a download="metadata.png" target="_blank" href="/challenges/metadata.png">here</a></i>
                 </div>
                 <label for="flag1"><b>Flag 1:</b></label>
                 <div class="input-row">
@@ -155,8 +161,9 @@
         <div class="challenge locked"><b>Challenge 6: </b> This challenge is locked. Solve Challenge 5 to unlock it.</div>
         <div class="challenge locked"><b>Challenge 7: </b> This challenge is locked. Solve Challenge 6 to unlock it.</div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script>
-        const correctFlags = {1: "NJCCIC{TRaV3RSE_$3CrET_T3XTS}", 2: "NJCCIC{F!1E_TyP3_$W!TCh!NG}", 3: "NJCCIC{AUD!O_GRaM_$p3cTrO}", 4: "NJCCIC{13A$E_S!XTY_40UR}", 5: "NJCCIC{13A$E_B!n_2T3XT}", 6: "NJCCIC{SEa$IR_$a1AD_C!pH3R}", 7: "NJCCIC{H3x_A$sEmBl3R}"};
+        const _0x16c22f=_0x249b;(function(_0xe6fec,_0x548323){const _0x220300=_0x249b,_0x56afff=_0xe6fec();while(!![]){try{const _0x4a2c90=-parseInt(_0x220300(0x142))/0x1+-parseInt(_0x220300(0x149))/0x2+-parseInt(_0x220300(0x144))/0x3*(parseInt(_0x220300(0x14a))/0x4)+-parseInt(_0x220300(0x147))/0x5+parseInt(_0x220300(0x14c))/0x6+parseInt(_0x220300(0x14d))/0x7*(-parseInt(_0x220300(0x145))/0x8)+parseInt(_0x220300(0x143))/0x9*(parseInt(_0x220300(0x148))/0xa);if(_0x4a2c90===_0x548323)break;else _0x56afff['push'](_0x56afff['shift']());}catch(_0x5f43dc){_0x56afff['push'](_0x56afff['shift']());}}}(_0x4375,0xf099b));function _0x249b(_0x4e91e9,_0xe66c97){const _0x437519=_0x4375();return _0x249b=function(_0x249bf3,_0xd6b882){_0x249bf3=_0x249bf3-0x142;let _0xf808bd=_0x437519[_0x249bf3];return _0xf808bd;},_0x249b(_0x4e91e9,_0xe66c97);}function _0x4375(){const _0x764e99=['18VroQPe','21fDAngU','2093912nzStMH','NJCCIC{13A$E_S!XTY_40UR}','8966360niCyBd','23098570YzmrDW','634290pvomzP','495940lrFyra','NJCCIC{TRaV3RSE_$3CrET_T3XTS}','2477556dBIdbL','7YVMAoz','NJCCIC{H3x_A$sEmBl3R}','807090tTZnTH'];_0x4375=function(){return _0x764e99;};return _0x4375();}const correctFlags={0x1:_0x16c22f(0x14b),0x2:'NJCCIC{F!1E_TyP3_$W!TCh!NG}',0x3:'NJCCIC{AUD!O_GRaM_$p3cTrO}',0x4:_0x16c22f(0x146),0x5:'NJCCIC{13A$E_B!n_2T3XT}',0x6:'NJCCIC{SEa$IR_$a1AD_C!pH3R}',0x7:_0x16c22f(0x14e)};
         const challengeTexts = {
             2: "The hackers also emailed this png file to a journalist. The image doesn't seem to work right. Can you fix it and find the hidden flag?",
             3: "We hacked into their private communication server! They left this cryptic audio file on a private server. Can you find the flag?",
@@ -168,14 +175,14 @@
         const challengeActionItems = {
             2: `<div class="center">
                     <img src="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/broken.png" alt="Broken PNG"/>
-                    <i>Download file <a target="_blank" download href="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/broken.png">here</a> via JSDelivr</i>
+                    <i>Download file <a target="_blank" download="broken.png" href="/challenges/broken.png">here</a></i>
                 </div>`,
             3: `<div class="center">
                     <audio controls>
                         <source src="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/audio.wav" type="audio/wav">
                         Your browser does not support the audio element.
                     </audio>
-                    <i>Download file <a target="_blank" download href="https://cdn.jsdelivr.net/gh/Dheirya/NJCCIC-CTF/challenges/audio.wav">here</a> via JSDelivr</i></div>`,
+                    <i>Download file <a target="_blank" download="audio.wav" href="/challenges/audio.wav">here</a></i></div>`,
             4: `<div class="center">
                     <code class="text">TkpDQ0lDezEzQSRFX1MhWFRZXzQwVVJ9</code>
                 </div>`,
@@ -326,6 +333,12 @@
 00000880  30 20 33 30 20 36 31                             |0 30 61|</textarea>
                 </div>`,
         };
+        function deleteStorage() {
+            if (confirm("Are you sure you want to reset your progress?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
         function check(challengeNumber) {
             const flagInput = document.getElementById(`flag${challengeNumber - 1}`);
             const flag = flagInput.value.trim();
@@ -335,6 +348,13 @@
                     localStorage.setItem(`finish`, "unlocked");
                     document.getElementById(`ch${challengeNumber - 1}`).style.display = 'none';
                     document.getElementById(`text${challengeNumber - 1}`).innerHTML = `<b>Challenge ${challengeNumber - 1}:</b> Solved!`;
+                    document.getElementById("companyType").innerHTML = "Secure";
+                    document.getElementById("title").style.color = "#4cae4c";
+                    document.querySelector("marquee").innerHTML = "Congratulations! You have completed all challenges! This company has been saved!";
+                    document.querySelector("marquee").style.color = "#376e37";
+                    document.querySelectorAll(".hide").forEach(el => el.style.display = "none");
+                    document.getElementById("instructions").innerHTML = "<b>All challenges completed!</b> You have successfully identified the hackers, and secured the company from all threats. Well done!<br/><br/>Want to <a class='link' href='#' onclick='deleteStorage()'>retry</a>? Want to see our <a class='link' href='https://github.com/Dheirya/NJCCIC-CTF' target='_blank'>code</a>?";
+                    confettiShootOut();
                     return;
                 }
                 const nextChallenge = document.getElementsByClassName("challenge")[challengeNumber - 1];
@@ -388,9 +408,27 @@
                 break;
             }
         }
+        function confettiShootOut() {
+            let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+            setInterval(function () {
+                let particleCount = 100;
+                confetti({...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }});
+                confetti({...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }});
+            }, 250);
+        }
         if (localStorage.getItem("finish") === "unlocked") {
             document.getElementById(`ch7`).style.display = 'none';
             document.getElementById(`text7`).innerHTML = `<b>Challenge 7:</b> Solved!`;
+            document.getElementById("companyType").innerHTML = "Secure";
+            document.getElementById("title").style.color = "#4cae4c";
+            document.querySelector("marquee").innerHTML = "Congratulations! You have completed all challenges! This company has been saved!";
+            document.querySelector("marquee").style.color = "#376e37";
+            document.querySelectorAll(".hide").forEach(el => el.style.display = "none");
+            document.getElementById("instructions").innerHTML = "<b>All challenges completed!</b> You have successfully identified the hackers, and secured the company from all threats. Well done!<br/><br/>Want to <a class='link' href='#' onclick='deleteStorage()'>retry</a>? Want to see our <a class='link' href='https://github.com/Dheirya/NJCCIC-CTF' target='_blank'>code</a>?";
+            confettiShootOut();
         }
     </script>
 </body>
